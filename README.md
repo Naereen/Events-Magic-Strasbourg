@@ -4,11 +4,13 @@ La plupart des événements Magic à Strasbourg sont réguliers : ce calendrier 
 
 ## Lien du calendrier
 
-<https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t>
+<!-- <https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t> -->
+
+https://naereen.github.io/Events-Magic-Strasbourg/
 
 ## Aperçu du calendrier
 
-TODO:
+![screenshot.png](screenshot.png)
 
 ## Comment ajouter ce calendrier à votre calendrier Google/autre ?
 
