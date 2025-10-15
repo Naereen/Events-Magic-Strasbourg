@@ -1,28 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<title>Events Magic à Strasbourg : agenda partagé en ligne (Google Agenda)</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Events Magic à Strasbourg : agenda partagé en ligne (Google Agenda)</title>
+	<!-- Google Fonts: une police moderne et lisible -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+		<!-- Favicon (emoji calendrier) en Data URI -->
+		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236f42c1' rx='16'/%3E%3Ctext x='50' y='65' font-size='60' text-anchor='middle' font-family='Segoe UI Emoji, Noto Color Emoji, Apple Color Emoji, sans-serif'%3E%F0%9F%93%85%3C/text%3E%3C/svg%3E" />
+	<style>
+			:root{
+				--bg: #f7f8fb;
+				--card: #ffffff;
+				--muted: #6b7280;
+				--accent: #6f42c1; /* couleur proche du violet utilisé */
+				--max-width: 1100px;
+				--text: #111827;
+				--header-bg: transparent;
+				--border: #eef2f7;
+				--shadow: 0 6px 20px rgba(16,24,40,0.06);
+				--btn-secondary-border: rgba(111,66,193,0.12);
+			}
+
+			/* Dark theme variables */
+			[data-theme="dark"]{
+				--bg: #071026;       /* fond uniforme, très sombre */
+				--card: #081227;     /* carte légèrement plus claire que le fond */
+				--muted: #9fb0c8;
+				--accent: #8b5cf6;
+				--text: #ffffff;     /* texte blanc en sombre */
+				--header-bg: transparent;
+				--border: rgba(255,255,255,0.04);
+				--shadow: 0 6px 20px rgba(2,6,23,0.6);
+				--btn-secondary-border: rgba(255,255,255,0.06);
+			}
+		html,body{height:100%;}
+		body{
+			margin:0;
+			font-family: 'Inter', 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+			background: linear-gradient(180deg, var(--bg), #ffffff 60%);
+			color:var(--text);
+			-webkit-font-smoothing:antialiased;
+			-moz-osx-font-smoothing:grayscale;
+			line-height:1.45;
+			padding:24px;
+		}
+		.container{
+			max-width:var(--max-width);
+			margin:0 auto;
+			background:var(--card);
+			box-shadow:var(--shadow);
+			border-radius:12px;
+			overflow:hidden;
+		}
+		header{
+			padding:28px 32px;
+			text-align:left;
+			border-bottom:1px solid var(--border);
+			background:var(--header-bg);
+		}
+		header h1{
+			margin:0 0 6px 0;
+			font-weight:600;
+			font-size:1.25rem;
+		}
+		header p{margin:0;color:var(--muted);font-size:0.95rem}
+
+		main{padding:24px;}
+		.calendar-wrapper{
+			width:100%;
+			/* Utilise aspect-ratio pour garder une dimension raisonnable */
+			aspect-ratio: 16/9;
+			background:var(--card);
+			border-radius:8px;
+			overflow:hidden;
+			border:1px solid var(--border);
+			margin-bottom:20px;
+		}
+				.actions{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+				.btn{
+					background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 18px rgba(99,102,241,0.12);
+				}
+				.btn.secondary{background:transparent;color:var(--accent);border:1px solid var(--btn-secondary-border);box-shadow:none}
+				.theme-toggle{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px;border-radius:999px;cursor:pointer}
+		.calendar-wrapper iframe{
+			width:100%;
+			height:100%;
+			border:0;
+			display:block;
+		}
+
+		h2{font-size:1.05rem;margin:18px 0 8px 0;color:var(--text)}
+		a{color:var(--accent);text-decoration:underline}
+
+		.info{max-width:900px;margin:0 auto;text-align:left;color:var(--muted);font-size:0.98rem}
+		ul{margin-top:8px}
+
+		footer{
+			padding:18px 24px;
+			text-align:center;
+			border-top:1px solid #eef2f7;
+			background:transparent;
+			font-size:0.9rem;
+			color:var(--muted);
+		}
+
+		/* Responsive tweaks */
+		@media (max-width:720px){
+			body{padding:16px}
+			header{padding:20px}
+			main{padding:16px}
+			header h1{font-size:1rem}
+			.calendar-wrapper{aspect-ratio: 4/3}
+		}
+	</style>
 </head>
-<center>
-<iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=2&ctz=Europe%2FParis&mode=WEEK&src=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA" style="border:solid 1px #777" width="1080" height="720" frameborder="0" scrolling="no"></iframe>
-</center>
-
 <body>
-<div style="padding: 70px 0; border: 0;text-align: center;">
-<h1>Comment s'abonner ?</h1>
-<h2>J'utilise <a href="https://calendar.google.com/calendar/u/0/r/week">Google Agenda</a></h2>
-Avec le bouton "Ajouter à Google Agenda" ci-dessus (à gauche), ou <a href="https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t">en cliquant ici</a>.
-Cela permet d'ajouter <a href="">l'agenda des Events Magic à Strasbourg</a> à votre propre Agenda.
+	<div class="container">
+		<header>
+			<h1>Events Magic à Strasbourg : agenda partagé en ligne (Google Agenda)</h1>
+			<p>par Lilian (Naereen)</p>
+				<div style="margin-top:10px; display:flex; gap:8px; align-items:center; justify-content:flex-end">
+					<button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Basculer le thème">🌗</button>
+				</div>
+		</header>
+		<main>
+				<div class="actions">
+					<a class="btn" href="https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener noreferrer">➕ S'abonner</a>
+					<a class="btn secondary" href="https://calendar.google.com/calendar/ical/47f794fd3110af39b54a2aaddd4270d64142e988acd588f2db04c05ac1054aa7%40group.calendar.google.com/public/basic.ics">📥 iCal</a>
+				</div>
 
-<h2>J'utilise une autre appli d'Agenda (format iCal)</h2>
-<ul>
-<li>L'agenda est disponible au format iCal à <a href="https://calendar.google.com/calendar/ical/47f794fd3110af39b54a2aaddd4270d64142e988acd588f2db04c05ac1054aa7%40group.calendar.google.com/public/basic.ics">ce lien là</a>.</li>
-<li>Cherchez par vous-même de l'aide, ou demandez ensuite à <b>Lilian (Naereen)</b> (sur un des Discord Magic à Strasbourg, par exemple <a href="https://disboard.org/server/512327166256742400">celui des Arpenteurs de Strasbourg</a>), pour <a href="https://duckduckgo.com/?q=comment+s%27abonner+%C3%A0+un+agenda+au+format+iCal&t=ffab&ia=web">vous abonner à un agenda au format iCal</a> dans votre application favorite de gestion d'agenda (elles devraient toutes le permettre).</li>
+				<div class="calendar-wrapper" aria-label="Calendrier Events Magic">
+					<iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=2&ctz=Europe%2FParis&mode=WEEK&src=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA" title="Agenda Events Magic Strasbourg" scrolling="no" loading="lazy"></iframe>
+				</div>
 
-<footer>
-<h4>Créé et maintenu bénévolement par passion par <a href="https://github.com/Naereen/Events-Magic-Strasbourg/">Lilian (Naereen)</a></h4>
-</footer>
-</div>
+			<section class="info">
+				<h2>Comment s'abonner ?</h2>
+				<h3>J'utilise <a href="https://calendar.google.com/calendar/u/0/r/week">Google Agenda</a></h3>
+				<p>Avec le bouton "Ajouter à Google Agenda" ci-dessus, ou <a href="https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t">en cliquant ici</a>. Cela permet d'ajouter l'agenda des Events Magic à Strasbourg à votre propre Agenda.</p>
+
+				<h3>J'utilise une autre appli d'Agenda (format iCal)</h3>
+				<ul>
+					<li>L'agenda est disponible au format iCal à <a href="https://calendar.google.com/calendar/ical/47f794fd3110af39b54a2aaddd4270d64142e988acd588f2db04c05ac1054aa7%40group.calendar.google.com/public/basic.ics">ce lien</a>.</li>
+					<li>Cherchez par vous-même de l'aide, ou demandez ensuite à <strong>Lilian (Naereen)</strong> (sur un des Discord Magic à Strasbourg, par exemple <a href="https://disboard.org/server/512327166256742400">celui des Arpenteurs de Strasbourg</a>), pour <a href="https://duckduckgo.com/?q=comment+s%27abonner+%C3%A0+un+agenda+au+format+iCal&t=ffab&ia=web">vous abonner à un agenda au format iCal</a> dans votre application favorite de gestion d'agenda.</li>
+				</ul>
+			</section>
+
+			<footer>
+				<div>Créé et maintenu bénévolement par passion par <a href="https://github.com/Naereen/Events-Magic-Strasbourg/">Lilian (Naereen)</a></div>
+			</footer>
+		</main>
+	</div>
+		<script>
+			// Theme toggle: respecte prefers-color-scheme et mémorise le choix dans localStorage
+			(function(){
+				const root = document.documentElement;
+				const toggle = document.getElementById('theme-toggle');
+				const stored = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				function applyTheme(theme){
+					if(theme === 'dark'){
+						root.setAttribute('data-theme','dark');
+						toggle.setAttribute('aria-pressed','true');
+					} else {
+						root.removeAttribute('data-theme');
+						toggle.setAttribute('aria-pressed','false');
+					}
+				}
+				// Initial
+				if(stored === 'dark' || (stored === null && prefersDark)) applyTheme('dark');
+				else applyTheme('light');
+
+				toggle.addEventListener('click', ()=>{
+					const isDark = root.getAttribute('data-theme') === 'dark';
+					const next = isDark ? 'light' : 'dark';
+					applyTheme(next);
+					localStorage.setItem('theme', next);
+				});
+			})();
+		</script>
 </body>
 </html>
