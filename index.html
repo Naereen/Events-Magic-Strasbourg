@@ -4,24 +4,25 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Events Magic à Strasbourg : agenda partagé en ligne (Google Agenda)</title>
-	<!-- Google Fonts: une police moderne et lisible -->
+	<meta name="description" content="Consultez et abonnez-vous à l'agenda partagé des événements Magic à Strasbourg (Google Agenda et iCal)." />
+	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<!-- Favicon (emoji calendrier) en Data URI -->
 		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236f42c1' rx='16'/%3E%3Ctext x='50' y='65' font-size='60' text-anchor='middle' font-family='Segoe UI Emoji, Noto Color Emoji, Apple Color Emoji, sans-serif'%3E%F0%9F%93%85%3C/text%3E%3C/svg%3E" />
 	<link rel="stylesheet" href="index-style.css">
 </head>
 <body>
+	<a href="#contenu" class="skip-link">Aller au contenu principal</a>
 	<div class="container">
 		<header>
-			<h1>Events Magic à Strasbourg : agenda partagé en ligne (Google Agenda) par Lilian (Naereen)
-				<!-- <div style="display:flex; gap:8px; align-items:center; justify-content:flex-end"> -->
-					<button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="Basculer le thème">🌗</button>
-				<!-- </div> -->
-            </h1>
+			<div class="header-inner">
+				<h1>Events Magic à Strasbourg : agenda partagé en ligne (Google Agenda) par Lilian (Naereen)</h1>
+				<button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre" title="Activer le thème sombre">🌙</button>
+			</div>
 		</header>
-		<main>
+		<main id="contenu" tabindex="-1">
             Cette page permet de consulter et de s'abonner à l'agenda partagé des <strong>Events Magic à Strasbourg</strong>, maintenu bénévolement par Lilian (Naereen).
             <br>
             Vous y trouverez les événements réguliers (FNM, tournois, etc.) ainsi que des événements spéciaux (avant-premières, gros tournois, etc.) organisés par les boutiques et associations de la région de Strasbourg.
@@ -34,13 +35,13 @@
             <p>Pour toute question ou suggestion, n'hésitez pas à contacter <strong>Lilian (Naereen)</strong> (sur un des Discord Magic à Strasbourg, par exemple <a href="https://disboard.org/server/512327166256742400">celui des Arpenteurs de Strasbourg</a>, ou par email à <a href="mailto:naereen@crans.org">naereen[@]crans.org</a>).</p>
 
             <div class="actions">
-                <a class="btn" href="https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener noreferrer">➕ S'abonner</a>
-                <a class="btn secondary" href="https://calendar.google.com/calendar/ical/47f794fd3110af39b54a2aaddd4270d64142e988acd588f2db04c05ac1054aa7%40group.calendar.google.com/public/basic.ics">📥 iCal</a>
+				<a class="btn" href="https://calendar.google.com/calendar/u/0?cid=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" target="_blank" rel="noopener noreferrer" aria-label="S'abonner à l'agenda dans Google Agenda (nouvel onglet)">➕ S'abonner à l'agenda</a>
+				<a class="btn secondary" href="https://calendar.google.com/calendar/ical/47f794fd3110af39b54a2aaddd4270d64142e988acd588f2db04c05ac1054aa7%40group.calendar.google.com/public/basic.ics" aria-label="Télécharger le fichier iCal (.ics)">📥 Télécharger le fichier iCal</a>
             </div>
 
             <div class="calendar-wrapper" aria-label="Calendrier Events Magic">
                 <!-- <iframe src="https://calendar.google.com/calendar/embed?height=720&wkst=2&ctz=Europe%2FParis&mode=WEEK&src=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238E24AA" title="Agenda Events Magic Strasbourg" scrolling="no" loading="lazy"></iframe> -->
-				<iframe src="https://calendar.google.com/calendar/embed?height=750&wkst=2&ctz=Europe%2FParis&mode=AGENDA&title=%C3%89vents%20Magic%20%C3%A0%20Strasbourg%20(maintenu%20par%20Lilian)&src=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238e24aa" style="border:solid 1px #777" width="1000" height="750" frameborder="0" scrolling="no"></iframe>
+				<iframe src="https://calendar.google.com/calendar/embed?height=750&wkst=2&ctz=Europe%2FParis&mode=AGENDA&title=%C3%89vents%20Magic%20%C3%A0%20Strasbourg%20(maintenu%20par%20Lilian)&src=NDdmNzk0ZmQzMTEwYWYzOWI1NGEyYWFkZGQ0MjcwZDY0MTQyZTk4OGFjZDU4OGYyZGIwNGMwNWFjMTA1NGFhN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238e24aa" title="Agenda Events Magic Strasbourg" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
 
 			<section class="info">
@@ -57,7 +58,7 @@
 
 			<footer>
 				<div>Créé et maintenu bénévolement par passion par <a href="https://github.com/Naereen/Events-Magic-Strasbourg/">Lilian (Naereen)</a></div>
-				<div style="margin-top:6px;font-size:0.9rem;color:inherit">© 2025 Lilian (Naereen). Code source sous licence <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></div>
+				<div style="margin-top:6px;font-size:0.9rem;color:inherit">© 2024-2026 Lilian (Naereen). Code source sous <a href="LICENSE" target="_blank" rel="noopener noreferrer">License MIT</a>.</div>
 			</footer>
 		</main>
 	</div>
@@ -72,11 +73,15 @@
 							if(theme === 'dark'){
 								root.setAttribute('data-theme','dark');
 								toggle.setAttribute('aria-pressed','true');
+								toggle.setAttribute('aria-label','Activer le thème clair');
+								toggle.setAttribute('title','Activer le thème clair');
 								// Show sun icon to indicate action will switch to light
 								toggle.textContent = '☀️';
 							} else {
 								root.removeAttribute('data-theme');
 								toggle.setAttribute('aria-pressed','false');
+								toggle.setAttribute('aria-label','Activer le thème sombre');
+								toggle.setAttribute('title','Activer le thème sombre');
 								// Show moon icon to indicate action will switch to dark
 								toggle.textContent = '🌙';
 							}
@@ -91,21 +96,6 @@
 					applyTheme(next);
 					localStorage.setItem('theme', next);
 				});
-			})();
-
-			// Adjust main padding to account for fixed header
-			(function(){
-				const header = document.querySelector('header');
-				const main = document.querySelector('main');
-				function adjust(){
-					const h = header.getBoundingClientRect().height + 20; // small gap
-					main.style.paddingTop = h + 'px';
-				}
-				window.addEventListener('resize', adjust);
-				// run after load to ensure computed heights
-				window.addEventListener('load', adjust);
-				// also call immediately in case DOM is ready
-				setTimeout(adjust,100);
 			})();
 		</script>
 </body>
